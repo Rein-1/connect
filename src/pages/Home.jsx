@@ -8,8 +8,8 @@ function Home() {
   <Row>
     <Col md={6} className='d-flex flex-direction-column align-item-center justify-content-center'>
         <div>
-            <h1>Share your thoughts with with people</h1>
-            <p>Connectichat connects people</p>
+            <h1>ConnectiChat</h1>
+          <h3>Connects you with People</h3>
             <LinkContainer to="/chat">
                 <Button variant='success'>
                     Get Started <i className='fas fa-comments home-message-icon'></i>

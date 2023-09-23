@@ -1,6 +1,6 @@
 .home__bg {
-    background: url('./Home.mp4');
-    height: 92vh;
+    background: url('./Home.jpg');
+    height: 95vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -8,6 +8,7 @@
 }
 
 .home-message-icon {
-    margin-left: 10px;
+    margin-left: 15px;
     display: inline-block;
+    /* align-self: auto; */
 }
