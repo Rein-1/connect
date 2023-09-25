@@ -105,7 +105,7 @@ function Signup() {
                 <Col md={5} className="signup__bg"></Col>
             </Row>
         </Container>
-  )
+    )
 }
 
 export default Signup
