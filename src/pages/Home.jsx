@@ -6,13 +6,13 @@ import './Home.css';
 function Home() {
   return ( 
   <Row>
-    <Col md={6} className='d-flex flex-direction-column align-item-center justify-content-center'>
+    <Col md={6} className='d-flex flex-direction-column align-items-center justify-content-center'>
         <div>
             <h1>ConnectiChat</h1>
           <h3>Connects you with People</h3>
-            <LinkContainer to="/chat">
+            <LinkContainer to="/login">
                 <Button variant='success'>
-                    Get Started <i className='fas fa-comments home-message-icon'></i>
+                    Connect now <i className='fas fa-comments home-message-icon'></i>
                 </Button>
                 
             </LinkContainer>
