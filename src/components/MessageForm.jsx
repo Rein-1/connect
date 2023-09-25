@@ -13,27 +13,20 @@ function MessageForm() {
     scrollToBottom();
   }, [messages]);
 
+
   function getFormattedDate() {
     const date = new Date();
     const year = date.getFullYear();
     let month = (1 + date.getMonth()).toString();
-
     month = month.length > 1 ? month : '0' + month;
     let day = date.getDate().toString();
-
     day = day.length > 1 ? day : "0" + day;
-
     return month + "/" + day + "/" + year;
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
   }
 
   function scrollToBottom() {
     messageEndRef.curren?.scrollToView({ behavior: 'smooth' });
   }
-
   const todayDate = getFormattedDate();
 
   socket.off('room-messages').on('room-messages', (roomMessages) => {
@@ -71,11 +64,11 @@ function MessageForm() {
                     <div key={idx}>
                         <p className="alert alert-info text-center message-date-indicator">{date}</p>
                         {messagesByDate?.map(({ content, time, from: sender }, msgIdx) => (
-                            <div className={sender?.email == user?.email ? "message" : "incoming-message"} key={msgIdx}>
+                            <div className={sender?.email === user?.email ? "message" : "incoming-message"} key={msgIdx}>
                                 <div className="message-inner">
                                     <div className="d-flex align-items-center mb-3">
                                         <img src={sender.picture} style={{ width: 35, height: 35, objectFit: "cover", borderRadius: "50%", marginRight: 10 }} />
-                                        <p className="message-sender">{sender._id == user?._id ? "You" : sender.name}</p>
+                                        <p className="message-sender">{sender._id === user?._id ? "You" : sender.name}</p>
                                     </div>
                                     <p className="message-content">{content}</p>
                                     <p className="message-timestamp-left">{time}</p>
