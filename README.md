@@ -1,6 +1,6 @@
 #ConnectiChat | Connect with people
 
-An chat application platform built using ReactJS, Redux Toolkit,Material UI, Node, Express, MongoDB, JWT and Mongoose.
+A chat application platform built using ReactJS, Redux Toolkit,Material UI, Node, Express, MongoDB, JWT and Mongoose.
 
 ## Tech Stack
 
