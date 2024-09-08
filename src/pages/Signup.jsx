@@ -12,7 +12,7 @@ function Signup() {
     const [email,setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
-    const [signupUser, { isLoading, error }] = useSignupUserMutation();
+    const [signupUser, { error }] = useSignupUserMutation();
     const navigate = useNavigate();
 
     // IMAGE UPLOAD STATE
@@ -70,7 +70,7 @@ function Signup() {
                     <Form style={{ width: "80%", maxWidth: 500 }} onSubmit={handleSignup}>
                         <h1 className="text-center">Create account</h1>
                             <div className="signup-profile-pic__container">
-                                <img src={imagePreview || botImg} className="signup-profile-pic" />
+                                <img src={imagePreview || botImg} alt='' className="signup-profile-pic" />
                                 <label htmlFor="image-upload" className="image-upload-label">
                                     <i className="fas fa-plus-circle add-picture-icon"></i>
                                 </label>

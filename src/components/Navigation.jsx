@@ -20,7 +20,7 @@ function Navigation() {
       <Container>
         <LinkContainer to="/">
           <Navbar.Brand>
-              <img src={logo} style={{width: 50, height: 50}} />
+              <img src={logo} alt="logo" style={{width: 50, height: 50}} />
           </Navbar.Brand>
         </LinkContainer>
         
@@ -46,7 +46,7 @@ function Navigation() {
               <NavDropdown 
                 title={
                   <>
-                    <img src={user.picture} style={{ width: 30, height: 30, marginRight: 10, objectFit: "cover", borderRadius: "50%" }} />
+                    <img src={user.picture} alt='User Profile' style={{ width: 30, height: 30, marginRight: 10, objectFit: "cover", borderRadius: "50%" }} />
                   </>
                 } 
                 id="basic-nav-dropdown">

@@ -30,7 +30,7 @@ const appApi = createApi({
             query: (payload) => ({
                 url: '/logout',
                 method: 'DELETE',
-                body: payload,
+                body: payload
             }),
         }),
     }),

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import "./App.css";
 import Navigation from "./components/Navigation";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -6,7 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
-import { useSelector, Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { AppContext, socket } from './context/appContext';
 
@@ -19,7 +18,7 @@ function App() {
   const [newMessages, setNewMessages] = useState({});
   const user = useSelector((state) => state.user);
   return (
-    <AppContext.Provider value={{ socket, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, rooms, setRooms, newMessages, setNewMessages }}>
+    <AppContext.Provider value={{ socket, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, rooms, setRooms, newMessages, setNewMessages, user }}>
       <BrowserRouter>
           <Navigation />
           <Routes>

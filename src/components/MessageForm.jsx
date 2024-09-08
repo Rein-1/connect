@@ -3,14 +3,31 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { AppContext } from "../context/appContext";
 import "./MessageForm.css";
+
+
 function MessageForm() {
     const [message, setMessage] = useState("");
     const user = useSelector((state) => state.user);
     const { socket, currentRoom, setMessages, messages, privateMemberMsg } = useContext(AppContext);
     const messageEndRef = useRef(null);
+    
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
+
+    useEffect(() => {
+        // Socket subscription for room messages
+        const handleRoomMessages = (roomMessages) => {
+            setMessages(roomMessages);
+        };
+
+        socket.on("room-messages", handleRoomMessages);
+
+        // Cleanup on unmount
+        return () => {
+            socket.off("room-messages", handleRoomMessages);
+        };
+    }, [socket, setMessages]);
 
     function getFormattedDate() {
         const date = new Date();
@@ -57,7 +74,7 @@ function MessageForm() {
                     <>
                         <div className="alert alert-info conversation-info">
                             <div>
-                                Your conversation with {privateMemberMsg.name} <img src={privateMemberMsg.picture} className="conversation-profile-pic" />
+                                Your conversation with {privateMemberMsg.name} <img src={privateMemberMsg.picture} alt="" className="conversation-profile-pic" />
                             </div>
                         </div>
                     </>
@@ -69,11 +86,11 @@ function MessageForm() {
                         <div key={idx}>
                             <p className="alert alert-info text-center message-date-indicator">{date}</p>
                             {messagesByDate?.map(({ content, time, from: sender }, msgIdx) => (
-                                <div className={sender?.email == user?.email ? "message" : "incoming-message"} key={msgIdx}>
+                                <div className={sender?.email === user?.email ? "message" : "incoming-message"} key={msgIdx}>
                                     <div className="message-inner">
                                         <div className="d-flex align-items-center mb-3">
-                                            <img src={sender.picture} style={{ width: 35, height: 35, objectFit: "cover", borderRadius: "50%", marginRight: 10 }} />
-                                            <p className="message-sender">{sender._id == user?._id ? "You" : sender.name}</p>
+                                            <img src={sender.picture} alt="" style={{ width: 35, height: 35, objectFit: "cover", borderRadius: "50%", marginRight: 10 }} />
+                                            <p className="message-sender">{sender._id === user?._id ? "You" : sender.name}</p>
                                         </div>
                                         <p className="message-content">{content}</p>
                                         <p className="message-timestamp-left">{time}</p>
